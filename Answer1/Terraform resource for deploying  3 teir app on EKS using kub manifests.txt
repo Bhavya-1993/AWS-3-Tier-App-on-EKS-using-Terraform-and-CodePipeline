@@ -1,0 +1,19 @@
+# Terraform resource for deploying backend-deployment.yaml
+resource "kubernetes_manifest" "backend_deployment" {
+  manifest = file("backend-deployment.yaml")
+}
+
+# Terraform resource for deploying backend-service.yaml
+resource "kubernetes_manifest" "backend_service" {
+  manifest = file("backend-service.yaml")
+}
+
+# Terraform resource for deploying database-deployment.yaml
+resource "kubernetes_manifest" "database_deployment" {
+  manifest = file("database-deployment.yaml")
+}
+
+# Terraform resource for deploying database-service.yaml
+resource "kubernetes_manifest" "database_service" {
+  manifest = file("database-service.yaml")
+}
