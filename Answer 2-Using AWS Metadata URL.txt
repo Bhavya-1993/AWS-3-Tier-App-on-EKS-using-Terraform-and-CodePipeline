@@ -1,0 +1,20 @@
+import requests
+
+def get_instance_metadata(key):
+    metadata_url = f'http://169.254.169.254/latest/meta-data/{key}'
+    response = requests.get(metadata_url, timeout=2)
+    
+    if response.status_code == 200:
+        return response.text
+    else:
+        return None
+
+if __name__ == "__main__":
+    # Specify the key you want to retrieve
+    key_to_retrieve = "instance-id"
+    instance_metadata = get_instance_metadata(key_to_retrieve)
+    
+    if instance_metadata is not None:
+        print(f"{key_to_retrieve}: {instance_metadata}")
+    else:
+        print(f"Failed to retrieve metadata for key: {key_to_retrieve}")
